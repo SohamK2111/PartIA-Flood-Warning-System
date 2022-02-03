@@ -17,7 +17,7 @@ stations_and_distance = []
 
 def stations_by_distance(stations, p):
     for station in stations:
-        stations_and_distance.append((station, haversine(p, station.coord)))
+        stations_and_distance.append((station.name, haversine(p, station.coord)))
     return sorted_by_key(stations_and_distance, 1)
 
 def rivers_with_station(stations):
@@ -56,4 +56,3 @@ def stations_by_river(a = "River Aire", b = "River Cam", c = "River Thames"):
    print(str(sorted(list_c)))
 
 #stations_by_river(a = "River Aire", b = "River Cam", c = "River Thames")
-
