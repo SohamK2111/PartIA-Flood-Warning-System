@@ -19,27 +19,13 @@ def run():
     
 #Part 2: Rivers by Station
 
-    a = "River Aire"
-    b = "River Cam"
-    c = "River Thames"
-
-    list_a = []
-    list_b = []
-    list_c = []
-
-    for station in stations:
-        if a == station.river:
-            list_a.append(station.name)
-        elif b == station.river:
-            list_b.append(station.name)
-        elif c ==station.river:
-            list_c.append(station.name)
-    print("\n \'River Aire\'")
-    print(str(sorted(list_a)))
-    print("\n \'River Cam\'")
-    print(str(sorted(list_b)))
-    print("\n \'River Thames\'")
-    print(str(sorted(list_c)))
+r_dict = stations_by_river(stations)
+print("\n")
+print(r_dict["River Aire"])
+print("\n")
+print(r_dict["River Cam"])
+print("\n")
+print(r_dict["River Thames"])
 
 if __name__ == "__main__":
     run()

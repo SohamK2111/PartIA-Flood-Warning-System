@@ -40,6 +40,11 @@ class MonitoringStation:
         return d
     
     def typical_range_consistent(self):
+        """This function checks to make sure that the high
+        range data is actually higher than the low range data, and that it actually exists,
+         to make sure that the data is consistent."""
+
+         
         if self.typical_range[1] > self.typical_range[0]:
             return True
         else:

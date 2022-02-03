@@ -16,11 +16,17 @@ stations = build_station_list()
 stations_and_distance = []
 
 def stations_by_distance(stations, p):
-    for station in stations:
-        stations_and_distance.append((station.name, haversine(p, station.coord)))
-    return sorted_by_key(stations_and_distance, 1)
+
+   """This function, given a list of staiton objects and a coordinate p, returns a list of (station, distance) tuples, 
+   where "distance" is the distance of the station from the coordinate p. This list is also sorted in order of distance."""
+
+   for station in stations:
+      stations_and_distance.append((station.name, haversine(p, station.coord)))
+   return sorted_by_key(stations_and_distance, 1)
 
 def rivers_with_station(stations):
+   """This function, given a list of station objects, returns a container with the names of the rivers with a monitoring station. 
+      It has one argument, which is a list of stations."""
    a = []
    rivers = []
    for station in stations:
@@ -37,22 +43,16 @@ def rivers_with_station(stations):
 
 #rivers_with_station(stations)
 
-def stations_by_river(a = "River Aire", b = "River Cam", c = "River Thames"):
-   list_a = []
-   list_b = []
-   list_c = []
-   for station in stations:
-      if a == station.river:
-         list_a.append(station.name)
-      elif b == station.river:
-         list_b.append(station.name)
-      elif c ==station.river:
-         list_c.append(station.name)
-   print("\n \'River Aire\'")
-   print(str(sorted(list_a)))
-   print("\'River Cam\'")
-   print(str(sorted(list_b)))
-   print("\'River Thames\'")
-   print(str(sorted(list_c)))
+def stations_by_river(stations):
 
-#stations_by_river(a = "River Aire", b = "River Cam", c = "River Thames")
+   """This function passes a list of stations, and returns a dictionary whose values 
+   are the stations that correspond to a particular river"""
+   
+   riverdict ={}
+   for station in stations:
+      if station.river in riverdict:
+         riverdict[station.river].append(station.name)
+      else:
+         riverdict[station.river] = [station.name]
+   riverdict = {k:sorted(v) for k,v in riverdict.items()}
+   return riverdict 

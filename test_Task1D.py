@@ -1,6 +1,7 @@
 from logging import raiseExceptions
 from floodsystem.geo import *
-from floodsystem.geo import rivers_with_station
+from floodsystem.station import MonitoringStation
+from Task1D import *
 
 def test_rivers_with_station():
     
@@ -21,11 +22,6 @@ def test_rivers_with_station():
     
         if station.river not in d:
             raise Exception("Error: List of unique rivers not complete")
-    
-    
 
-
-
-
-
-    #assert that each river in the ordered set list has a monitoring station
+def test_stations_by_river():
+    assert type(r_dict) == dict
