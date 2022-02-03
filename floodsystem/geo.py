@@ -20,21 +20,6 @@ def stations_by_distance(stations, p):
         stations_and_distance.append((station, haversine(p, station.coord)))
     return sorted_by_key(stations_and_distance, 1)
 
-
-def task_1B():
-   a = stations_by_distance(stations, (52.2053, 0.1218))
-   print("The 10 CLOSEST stations are: ")
-   for i in range(10):
-      print(str(a[i][0].name) + ", " + str(a[i][0].town) + ", " + str(a[i][1]))
-
-   print("\n The 10 FURTHEST stations are: ")
-   for i in range(10):
-      print(str(a[-i][0].name) + ", " + str(a[-i][0].town) + ", " + str(a[-i][1]))
-
-
-
-
-
 def rivers_with_station(stations):
    a = []
    rivers = []
