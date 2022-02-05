@@ -20,10 +20,9 @@ stations = build_station_list()
 stations_and_distance = []
 
 def stations_by_distance(stations, p):
-    for station in stations:
-        stations_and_distance.append((station, haversine(p, station.coord)))
-    return sorted_by_key(stations_and_distance, 1)
 
+   """This function, given a list of staiton objects and a coordinate p, returns a list of (station, distance) tuples, 
+   where "distance" is the distance of the station from the coordinate p. This list is also sorted in order of distance."""
 
 
 def stations_within_radius(stations, centre, r):
@@ -79,10 +78,39 @@ def task_1B():
    print("The 10 CLOSEST stations are: ")
    for i in range(10):
       print(str(a[i][0].name) + ", " + str(a[i][0].town) + ", " + str(a[i][1]))
+   for station in stations:
+      stations_and_distance.append((station.name, haversine(p, station.coord)))
+   return sorted_by_key(stations_and_distance, 1)
 
-   print("\n The 10 FURTHEST stations are: ")
-   for i in range(10):
-      print(str(a[-i][0].name) + ", " + str(a[-i][0].town) + ", " + str(a[-i][1]))
+def rivers_with_station(stations):
+   """This function, given a list of station objects, returns a container with the names of the rivers with a monitoring station. 
+      It has one argument, which is a list of stations."""
+   a = []
+   rivers = []
+   for station in stations:
+      rivers.append(station.river)
+   for river in rivers:
+      if river in stations:
+         a.append(river)
 
+   b = set(rivers)
+   c = list(b)
+   d = sorted(c)
 
-task_1B()
+   print(str(len(d)) + " stations. First 10 - " + str(d[:10]))
+
+#rivers_with_station(stations)
+
+def stations_by_river(stations):
+
+   """This function passes a list of stations, and returns a dictionary whose values 
+   are the stations that correspond to a particular river"""
+   
+   riverdict ={}
+   for station in stations:
+      if station.river in riverdict:
+         riverdict[station.river].append(station.name)
+      else:
+         riverdict[station.river] = [station.name]
+   riverdict = {k:sorted(v) for k,v in riverdict.items()}
+   return riverdict 
