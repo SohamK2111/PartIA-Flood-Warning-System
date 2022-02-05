@@ -11,7 +11,6 @@ from floodsystem.station import MonitoringStation
 from haversine import haversine, Unit
 from floodsystem.stationdata import build_station_list
 import math
-
 from floodsystem.utils import sorted_by_key
 
 
@@ -114,3 +113,5 @@ def stations_by_river(stations):
          riverdict[station.river] = [station.name]
    riverdict = {k:sorted(v) for k,v in riverdict.items()}
    return riverdict 
+
+   
