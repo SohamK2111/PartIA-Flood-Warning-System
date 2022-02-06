@@ -81,6 +81,7 @@ def task_1B():
       stations_and_distance.append((station.name, haversine(p, station.coord)))
    return sorted_by_key(stations_and_distance, 1)
 
+
 def rivers_with_station(stations):
    """This function, given a list of station objects, returns a container with the names of the rivers with a monitoring station. 
       It has one argument, which is a list of stations."""
