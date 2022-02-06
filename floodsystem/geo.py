@@ -72,16 +72,6 @@ def rivers_by_station_number(stations, N):
     print(sorted_list[:N+counter2])
 
 
-def task_1B():
-   a = stations_by_distance(stations, (52.2053, 0.1218))
-   print("The 10 CLOSEST stations are: ")
-   for i in range(10):
-      print(str(a[i][0].name) + ", " + str(a[i][0].town) + ", " + str(a[i][1]))
-   for station in stations:
-      stations_and_distance.append((station.name, haversine(p, station.coord)))
-   return sorted_by_key(stations_and_distance, 1)
-
-
 def rivers_with_station(stations):
    """This function, given a list of station objects, returns a container with the names of the rivers with a monitoring station. 
       It has one argument, which is a list of stations."""
