@@ -1,7 +1,13 @@
 
-from floodsystem.stationdata import build_station_list
-from floodsystem.utils import sorted_by_key  # noqa
-from floodsystem.geo import rivers_by_station_number
+from pip import main
+from floodsystem.geo import *
 
-stations = build_station_list()
-rivers_by_station_number(stations, 7)
+
+def run():
+
+    print(f"Rivers with the greatest number of stations:")
+    rivers_by_station_number(stations, 7)
+
+
+if __name__ == "__main__":
+        run()  
