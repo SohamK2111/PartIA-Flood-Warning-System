@@ -57,6 +57,7 @@ def inconsistent_typical_range_stations(stations):
         if MonitoringStation.typical_range_consistent(station) == False:
             x.append(station)
     
+    print(x)
     return x
 
 
