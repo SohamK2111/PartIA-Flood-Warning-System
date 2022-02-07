@@ -25,18 +25,24 @@ def stations_by_distance(stations, p):
 
 
 def stations_within_radius(stations, centre, r):
-    stations_in_radius = []
 
-    for station in stations:
+   """This function, given a list of staiton objects and a coordinate centre, returns a list of station names that are within 
+   the radius r"""
+
+   stations_in_radius = []
+
+   for station in stations:
         d = haversine(centre, station.coord)
         if d < r or d == r:
             stations_in_radius.append(station)
 
-    list_of_names = []
-    for station in stations_in_radius:
+   list_of_names = []
+   for station in stations_in_radius:
         list_of_names.append(station.name)
     
-    print(sorted(list_of_names))
+   print(sorted(list_of_names))
+   sorted_list_of_names = sorted(list_of_names)
+   return sorted_list_of_names
 
 
 def rivers_by_station_number(stations, N):
