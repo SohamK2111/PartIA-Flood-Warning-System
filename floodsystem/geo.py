@@ -5,10 +5,12 @@
 geographical data.
 
 """
-from floodsystem.stationdata import build_station_list
-from floodsystem.utils import sorted_by_key  # noqa
+
+from floodsystem.station import MonitoringStation
 from haversine import haversine, Unit
 from floodsystem.stationdata import build_station_list
+import math
+from floodsystem.utils import sorted_by_key
 
 
 stations = build_station_list()
@@ -19,8 +21,51 @@ def stations_by_distance(stations, p):
    where "distance" is the distance of the station from the coordinate p. This list is also sorted in order of distance."""
    stations_and_distance = []
    for station in stations:
-      stations_and_distance.append((station.name, haversine(p, station.coord)))
-   return sorted_by_key(stations_and_distance, 1)
+        d = haversine(centre, station.coord)
+        if d < r or d == r:
+            stations_in_radius.append(station)
+
+   list_of_names = []
+   for station in stations_in_radius:
+        list_of_names.append(station.name)
+    
+   print(sorted(list_of_names))
+   sorted_list_of_names = sorted(list_of_names)
+   return sorted_list_of_names
+
+
+def rivers_by_station_number(stations, N):
+    #create list of all river names
+    rivers = []
+    
+    for station in stations:
+        if station.river not in rivers:
+            rivers.append(station.river)
+    
+    list_of_tuples = []
+
+    for river in rivers:
+        counter = 0
+        for station in stations:
+            if station.river == river:
+                counter += 1 
+        list_of_tuples.append((river, counter))
+    
+    sorted_list = sorted_by_key(list_of_tuples, 1, True)
+
+    #TODO - in the case that there are more rivers with same number of stations, print them too.
+    #number of items in list excluding first N
+    x = len(sorted_list) - N
+    counter2 = 0
+
+    for item in sorted_list[-x:]:
+        if item[1] == sorted_list[N][1]:
+            counter2 += 1
+        else:
+            break
+    
+    print(sorted_list[:N+counter2])
+
 
 def rivers_with_station(stations):
    """This function, given a list of station objects, returns a container with the names of the rivers with a monitoring station. 
@@ -54,3 +99,5 @@ def stations_by_river(stations):
          riverdict[station.river] = [station.name]
    riverdict = {k:sorted(v) for k,v in riverdict.items()}
    return riverdict 
+
+   
