@@ -13,13 +13,11 @@ from floodsystem.stationdata import build_station_list
 
 stations = build_station_list()
 
-stations_and_distance = []
-
 def stations_by_distance(stations, p):
 
    """This function, given a list of staiton objects and a coordinate p, returns a list of (station, distance) tuples, 
    where "distance" is the distance of the station from the coordinate p. This list is also sorted in order of distance."""
-
+   stations_and_distance = []
    for station in stations:
       stations_and_distance.append((station.name, haversine(p, station.coord)))
    return sorted_by_key(stations_and_distance, 1)
