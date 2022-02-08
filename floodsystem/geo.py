@@ -95,7 +95,6 @@ def rivers_with_station(stations):
 
    print(str(len(d)) + " stations. First 10 - " + str(d[:10]))
 
-#rivers_with_station(stations)
 
 def stations_by_river(stations):
 
