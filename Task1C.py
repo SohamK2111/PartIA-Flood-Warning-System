@@ -4,9 +4,14 @@ from floodsystem.geo import *
 
 def run():
 
+    a = stations_within_radius(stations, (52.2053, 0.1218), 10)
+    list_of_names = []
+    for station in a:
+      list_of_names.append(station.name)
+
     print("\n")
-    print(f"Stations within this radius are:")
-    stations_within_radius(stations, (52.2053, 0.1218), 10)
+    print("Stations within this radius are:")
+    print(sorted(list_of_names))
     print("\n")
 
 
