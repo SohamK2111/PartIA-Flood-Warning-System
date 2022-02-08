@@ -37,11 +37,7 @@ def stations_within_radius(stations, centre, r):
       if d < r or d == r:
          stations_in_radius.append(station)
    
-   list_of_names = []
-   for station in stations_in_radius:
-      list_of_names.append(station.name)
-   print(sorted(list_of_names))
-   return(sorted(list_of_names))
+   return(stations_in_radius)
 
 
 def rivers_by_station_number(stations, N):
@@ -75,7 +71,7 @@ def rivers_by_station_number(stations, N):
       else:
          break
     
-   print(sorted_list[:N+counter2])
+   return(sorted_list[:N+counter2])
 
 
 def rivers_with_station(stations):
