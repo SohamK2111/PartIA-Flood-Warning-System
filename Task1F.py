@@ -5,9 +5,14 @@ from floodsystem.station import *
 
 def run():
 
+    b = []
+    incon_stations = inconsistent_typical_range_stations(stations)
+    for station in incon_stations:
+        b.append(station.name)
+    
     print("\n")
-    print(f"Stations with inconsistent data:")
-    inconsistent_typical_range_stations(stations)
+    print("Stations with inconsistent data:")
+    print(sorted(b))
     print("\n")
 
 

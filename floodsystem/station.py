@@ -44,12 +44,14 @@ class MonitoringStation:
         range data is actually higher than the low range data, and that it actually exists,
          to make sure that the data is consistent."""
 
-         
-        if self.typical_range[1] > self.typical_range[0]:
+        if self.typical_range == None:
+            return False
+        elif self.typical_range[1] > self.typical_range[0]:
             return True
         else:
             return False
-        
+
+
  
 def inconsistent_typical_range_stations(stations):
     x = []
@@ -57,8 +59,8 @@ def inconsistent_typical_range_stations(stations):
         if MonitoringStation.typical_range_consistent(station) == False:
             x.append(station)
     
-    print(x)
     return x
+
 
 
     
