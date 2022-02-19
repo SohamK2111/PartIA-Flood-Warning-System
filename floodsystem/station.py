@@ -6,6 +6,7 @@ for manipulating/modifying station data
 
 """
 
+
 class MonitoringStation:
     """This class represents a river level monitoring station"""
 
@@ -53,7 +54,6 @@ class MonitoringStation:
     def relative_water_level(self):
 
         """This function returns the water level as a fraction of the typical range."""
-
         if self.typical_range_consistent == False:
             return None
         else:
