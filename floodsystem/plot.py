@@ -7,6 +7,10 @@ from floodsystem.datafetcher import fetch_latest_water_level_data, fetch_measure
 
 
 def plot_water_level_with_fit(station, dates, levels, p):
+
+    #This function, given the station, the list of dates, the list of water levels, and the polynomial degree, 
+    #returns plots of the typical range, the water level over the past 2 days, and the least-squares fit all on the same graph.
+
     fetch_latest_water_level_data(station)    
     float_dates = matplotlib.dates.date2num(dates)
     p_coeff= np.polyfit(float_dates - float_dates[0], levels, p)
