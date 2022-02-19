@@ -4,6 +4,7 @@ from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.utils import sorted_by_key
 from floodsystem.station import MonitoringStation
 import datetime
+import matplotlib.pyplot as plt
 
 def run():
     
@@ -21,10 +22,10 @@ def run():
     for i in five_greatest_levels:
         dt = 2
         dates, levels = fetch_measure_levels(i[0].measure_id, dt=datetime.timedelta(days=dt))
-        print(levels)
+        print(i[0].typical_range)
         plot_water_level_with_fit(i[0], dates, levels, 4)
-    
-    
+        
+
 if __name__ == "__main__":
     run()
 

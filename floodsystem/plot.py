@@ -14,4 +14,12 @@ def plot_water_level_with_fit(station, dates, levels, p):
     plt.plot(float_dates, levels, '.')
     x1 = np.linspace(float_dates[0], float_dates[-1], 60)
     plt.plot(x1, poly1(x1 - float_dates[0]))
+    b = []
+    for k in x1:
+        b.append(station.typical_range[0])
+    plt.plot(x1, b, '.')
+    d = []
+    for j in x1:
+        d.append(station.typical_range[1])
+    plt.plot(x1, d, '.')
     plt.show()
