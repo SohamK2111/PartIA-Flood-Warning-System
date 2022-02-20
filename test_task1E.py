@@ -14,6 +14,7 @@ def test_rivers_by_station_number():
     if len(rivers) != len(set(rivers)):
         raise Exception("ERROR - List of rivers is not unique")
 
-
+    
 test_rivers_by_station_number()
+
 

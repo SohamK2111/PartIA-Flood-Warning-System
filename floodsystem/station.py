@@ -6,6 +6,9 @@ for manipulating/modifying station data
 
 """
 
+from sqlalchemy import Float
+
+
 class MonitoringStation:
     """This class represents a river level monitoring station"""
 
@@ -26,7 +29,7 @@ class MonitoringStation:
         self.river = river
         self.town = town
 
-        self.latest_level = None
+        self.latest_level = Float
 
     def __repr__(self):
         d = "Station name:     {}\n".format(self.name)
@@ -42,7 +45,6 @@ class MonitoringStation:
         """This function checks to make sure that the high
         range data is actually higher than the low range data, and that it actually exists,
          to make sure that the data is consistent."""
-
         if self.typical_range == None:
             return False
         elif self.typical_range[1] > self.typical_range[0]:
@@ -51,12 +53,14 @@ class MonitoringStation:
             return False
     
     def relative_water_level(self):
-
         """This function returns the water level as a fraction of the typical range."""
-
-        if self.typical_range_consistent == False:
+    
+        if MonitoringStation.typical_range_consistent(self) == False:
+            return None
+        elif self.latest_level == None:
             return None
         else:
+            #print(self.latest_level)
             fraction_of_range = (self.latest_level - self.typical_range[0])/(self.typical_range[1] - self.typical_range[0])
             return fraction_of_range
 
@@ -67,6 +71,7 @@ def inconsistent_typical_range_stations(stations):
             x.append(station)
     
     return x
+
 
 
 
