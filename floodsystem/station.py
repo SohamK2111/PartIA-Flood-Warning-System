@@ -27,7 +27,7 @@ class MonitoringStation:
         self.river = river
         self.town = town
 
-        self.latest_level = Float
+        self.latest_level = None
 
     def __repr__(self):
         d = "Station name:     {}\n".format(self.name)
@@ -58,7 +58,6 @@ class MonitoringStation:
         elif self.latest_level == None:
             return None
         else:
-            #print(self.latest_level)
             fraction_of_range = (self.latest_level - self.typical_range[0])/(self.typical_range[1] - self.typical_range[0])
             return fraction_of_range
 
