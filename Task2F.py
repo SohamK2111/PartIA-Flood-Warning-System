@@ -22,7 +22,6 @@ def run():
     for i in five_greatest_levels:
         dt = 2
         dates, levels = fetch_measure_levels(i[0].measure_id, dt=datetime.timedelta(days=dt))
-        #print(i[0].typical_range)
         plot_water_level_with_fit(i[0], dates, levels, 4)
         
 
