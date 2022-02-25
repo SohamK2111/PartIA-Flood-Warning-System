@@ -16,20 +16,23 @@ def run():
             pass
         elif station.typical_range is None:
             pass
+        elif station.relative_water_level() is None:
+            pass
         else:
             list_of_levels.append((station, station.relative_water_level()))
             #print(station.latest_level, station.relative_water_level())
-    #print(list_of_levels)
+    #for i in list_of_levels:
+        #print(i[1])
 
     sorted_levels = sorted_by_key(list_of_levels, 1)
     five_greatest_levels = sorted_levels[-5:]
-    #print(five_greatest_levels)
+    print(five_greatest_levels)
 
     for i in five_greatest_levels:
         dt = 2
         dates, levels = fetch_measure_levels(i[0].measure_id, dt=datetime.timedelta(days=dt))
         plot_water_level_with_fit(i[0], dates, levels, 4)
-        #print(levels)
+        print(levels)
 
 if __name__ == "__main__":
     run()
