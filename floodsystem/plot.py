@@ -4,6 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 #from floodsystem.analysis import polyfit
 from floodsystem.datafetcher import fetch_latest_water_level_data, fetch_measure_levels
+from datetime import datetime, timedelta
+
 
 
 def plot_water_level_with_fit(station, dates, levels, p):
@@ -32,3 +34,16 @@ def plot_water_level_with_fit(station, dates, levels, p):
     plt.legend()
     plt.title(station.name)
     plt.show()
+
+def plot_water_levels(station, dates, levels):
+
+    plt.plot(dates, levels)
+
+    plt.xlabel('date')
+    plt.ylabel('water level (m)')
+    plt.xticks(rotation=45);
+    plt.title(station.name)
+
+    plt.tight_layout()  
+    plt.show()
+
