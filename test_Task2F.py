@@ -20,7 +20,7 @@ test_polyfit()
 def test_plot_water_level_with_fit():
     stations = build_station_list()
     dt = 2
-    for station in stations[:30]:
+    for station in stations[:10]:
         dates, levels = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))
         if len(dates) > 0:
             plot_water_level_with_fit(station, dates, levels, 4)
